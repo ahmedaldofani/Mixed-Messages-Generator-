@@ -10,14 +10,20 @@ function generateMessage() {
   const lifeEventIndex = Math.floor(Math.random() * lifeEvents.length);
   const lifeAdviceIndex = Math.floor(Math.random() * lifeAdvice.length);
 
-  // Generate the mixed message
-  const mixedMessage = `Star Sign: ${starSigns[starSignIndex]}\nLife Event: ${lifeEvents[lifeEventIndex]}\nLife Advice: ${lifeAdvice[lifeAdviceIndex]}`;
+  // Retrieve the message container elements
+  const starSignElement = document.getElementById('star-sign');
+  const lifeEventElement = document.getElementById('life-event');
+  const lifeAdviceElement = document.getElementById('life-advice');
 
-  // Return the mixed message
-  return mixedMessage;
+  // Set the text content of each element
+  starSignElement.textContent = `Star Sign: ${starSigns[starSignIndex]}`;
+  lifeEventElement.textContent = `Life Event: ${lifeEvents[lifeEventIndex]}`;
+  lifeAdviceElement.textContent = `Life Advice: ${lifeAdvice[lifeAdviceIndex]}`;
 }
 
-// Generate and display the mixed message
-const mixedMessage = generateMessage();
-console.log(mixedMessage);
+// Attach the generateMessage function to the button click event
+const generateButton = document.getElementById('generate-btn');
+generateButton.addEventListener('click', generateMessage);
 
+// Generate initial message on page load
+generateMessage();
